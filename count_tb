@@ -1,0 +1,64 @@
+`timescale 1ns / 1ps
+
+
+
+module count_tb;
+    reg clk;
+    reg tick;
+    //input wire clk,
+    reg clr;
+    reg go;
+    wire [3:0] d3, d2, d1, d0;
+    
+    
+      
+    initial
+    begin         
+        tick = 1'b0;
+        clr = 1'b0;
+        go = 1'b1;
+        clk = 1'b0;
+    end
+    
+    always
+    begin  
+    #10 clk = ~clk ;
+    //#200 tick = ~tick;
+    end
+    
+    counter countingmyticks(.clk(clk),.go(go), .tick(tick), .clr(clr), .d3(d3), .d2(d2), .d1(d1), .d0(d0) );
+       
+     initial
+        begin
+            #0 tick = 1'b1;
+            #100 tick = 1'b0;
+            #100 tick = 1'b1;
+            #100 tick = 1'b0;
+            #100 tick = 1'b1;
+            #100 tick = 1'b0;
+            #0 tick = 1'b1;
+            #100 tick = 1'b0;
+            #100 tick = 1'b1;
+            #100 tick = 1'b0;
+             #100 tick = 1'b1;
+             #100 tick = 1'b0;
+            #0 tick = 1'b1;
+             #100 tick = 1'b0;
+             #100 tick = 1'b1;
+             #100 tick = 1'b0;
+             #100 tick = 1'b1;
+             #100 tick = 1'b0;
+            #0 tick = 1'b1;
+             #100 tick = 1'b0;
+             #100 tick = 1'b1;
+             #100 tick = 1'b0;
+             #100 tick = 1'b1;
+             #100 tick = 1'b0;                          
+       
+     end
+    
+        
+     
+    
+    
+endmodule
